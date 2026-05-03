@@ -1,0 +1,24 @@
+```
+# Mini-program build artifacts
+.shadowe-miniprogram/.DS_Store
+.shadowe-miniprogram/miniprogram_npm/
+.shadowe-miniprogram/dist/
+.shadowe-miniprogram/build/
+
+# Dependencies
+node_modules/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Editors
+.vscode/
+.idea/
+```

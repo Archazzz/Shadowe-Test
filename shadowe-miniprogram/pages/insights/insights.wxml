@@ -1,0 +1,80 @@
+<!--pages/insights/insights.wxml-->
+<view class="page-container dark-theme">
+  <scroll-view scroll-y class="scroll-container">
+    <!-- 标题区域 -->
+    <view class="insights-header p-lg">
+      <text class="page-title font-h1 text-white">我们发现了</text>
+      <text class="page-subtitle font-h1 text-primary-gradient">{{filters.find(f => f.key === activeFilter).count}} 个关键洞察</text>
+      <text class="page-desc font-body text-white-dim">基于本次访谈的深度分析</text>
+    </view>
+
+    <!-- 筛选标签栏 -->
+    <scroll-view scroll-x class="filter-scroll" show-scrollbar="{{false}}">
+      <view class="filter-tags-row flex">
+        <view 
+          class="filter-tag tag radius-full font-caption {{item.key === activeFilter ? 'tag-active' : 'tag-inactive'}}"
+          wx:for="{{filters}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="onFilterTap"
+        >
+          {{item.label}} {{item.count}}
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 洞察卡片列表 -->
+    <view class="insights-list p-lg">
+      <view 
+        class="insight-card card p-lg"
+        wx:for="{{insights}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onInsightTap"
+      >
+        <view class="insight-card-header flex items-start justify-between">
+          <view class="insight-tags flex flex-wrap gap-xs margin-bottom-sm">
+            <view class="tag tag-{{item.type}} radius-sm font-micro">{{item.typeLabel}}</view>
+            <view class="tag tag-frequent radius-sm font-micro">{{item.frequencyLabel}}</view>
+          </view>
+          <view class="interview-count flex items-center text-white-dim">
+            <text class="iconfont icon-users margin-right-xs"></text>
+            <text class="font-caption">{{item.interviewCount}}</text>
+          </view>
+        </view>
+
+        <text class="insight-title font-h2 text-white margin-bottom-md">{{item.title}}</text>
+        <text class="insight-description font-body text-white-dim margin-bottom-lg">{{item.description}}</text>
+
+        <view class="insight-quote bg-primary-light radius-sm p-md margin-bottom-lg">
+          <text class="quote-icon text-primary">"</text>
+          <text class="quote-content font-body text-secondary">{{item.quote}}</text>
+        </view>
+
+        <view class="insight-card-footer flex items-center justify-between">
+          <view class="avatar-group">
+            <view class="avatar avatar-sm" wx:for="{{item.avatar}}" wx:key="*this">{{item}}</view>
+          </view>
+          <view class="impact-ring ring-progress" style="--progress-deg: {{item.impactScore * 3.6}}deg">
+            <text class="impact-score font-h2 text-primary">{{item.impactScore}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提示行 -->
+    <view class="hint-row flex items-center justify-center p-lg">
+      <text class="iconfont icon-bulb hint-icon"></text>
+      <text class="hint-text font-caption text-white-dim margin-left-xs">洞察已自动归类，点击可查看详情</text>
+      <text class="iconfont icon-arrow-right hint-arrow"></text>
+    </view>
+
+    <!-- 底部操作按钮 -->
+    <view class="bottom-action p-lg safe-area-bottom">
+      <button class="btn btn-primary w-full" bindtap="onGenerateReport">
+        <text class="iconfont icon-download margin-right-xs"></text>
+        生成洞察报告
+      </button>
+    </view>
+  </scroll-view>
+</view>

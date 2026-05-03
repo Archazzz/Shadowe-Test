@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/projects/projects",
+    "pages/profile/profile",
+    "pages/recording/recording",
+    "pages/analyzing/analyzing",
+    "pages/insights/insights",
+    "pages/project-detail/project-detail",
+    "pages/interviews/interviews",
+    "pages/questionnaire-import/questionnaire-import",
+    "pages/chat-create/chat-create"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F7F5FF",
+    "navigationBarTitleText": "影察 Shadowe",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F7F5FF"
+  },
+  "tabBar": {
+    "color": "#9999AA",
+    "selectedColor": "#8B6CF6",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/projects/projects",
+        "text": "项目",
+        "iconPath": "images/projects.png",
+        "selectedIconPath": "images/projects-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

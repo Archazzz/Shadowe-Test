@@ -1,0 +1,131 @@
+<!--pages/home/home.wxml-->
+<view class="page-container">
+  <scroll-view scroll-y class="scroll-container">
+    <!-- 顶部品牌栏 -->
+    <view class="home-header">
+      <view class="brand-bar flex items-center justify-between">
+        <view class="brand-info flex items-center">
+          <view class="brand-logo">S</view>
+          <text class="brand-name font-h3 text-primary">Shadowe 影察</text>
+          <view class="pro-badge tag tag-primary radius-full font-micro">Pro</view>
+        </view>
+        <view class="header-actions flex items-center">
+          <view class="notification-icon" bindtap="onNotificationTap">
+            <text class="iconfont icon-bell"></text>
+            <view class="badge-dot"></view>
+          </view>
+          <view class="user-avatar avatar" bindtap="onAvatarTap">U</view>
+        </view>
+      </view>
+
+      <!-- 主标题区 -->
+      <view class="main-title-section">
+        <text class="main-title font-display text-primary">{{mainTitle}}</text>
+        <text class="sub-title font-display text-primary-gradient">{{subTitle}}</text>
+        <text class="description font-body text-secondary">{{description}}</text>
+        
+        <!-- AI 视觉插画 -->
+        <view class="ai-illustration animate-breathe">
+          <view class="ai-avatar-ring ring-1"></view>
+          <view class="ai-avatar-ring ring-2"></view>
+          <view class="ai-avatar-ring ring-3"></view>
+          <view class="ai-avatar">
+            <text class="iconfont icon-robot"></text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 信任标签行 -->
+      <scroll-view scroll-x class="trust-tags-scroll" show-scrollbar="{{false}}">
+        <view class="trust-tags-row flex">
+          <view class="trust-tag tag tag-primary radius-sm flex items-center" wx:for="{{trustTags}}" wx:key="index">
+            <text class="iconfont icon-{{item.icon}} trust-tag-icon"></text>
+            <text class="font-caption text-secondary">{{item.text}}</text>
+          </view>
+        </view>
+      </scroll-view>
+
+      <!-- 主操作按钮 -->
+      <view class="main-action-section">
+        <button class="btn btn-primary main-action-btn" bindtap="onStartConversation">
+          <view class="btn-content flex items-center justify-between w-full">
+            <view class="btn-left flex items-center">
+              <text class="iconfont icon-mic btn-icon"></text>
+              <view class="btn-text-group">
+                <text class="btn-title font-h2 text-white">开始一次真实对话</text>
+                <text class="btn-subtitle font-caption text-white">录音 / 导入 / 问卷都可以</text>
+              </view>
+            </view>
+            <text class="iconfont icon-arrow-right btn-arrow"></text>
+          </view>
+        </button>
+      </view>
+
+      <!-- 快捷功能网格 -->
+      <view class="quick-features-section">
+        <view class="quick-features-grid grid grid-cols-3 gap-md">
+          <view class="quick-feature-item flex-col items-center" wx:for="{{quickFeatures}}" wx:key="index">
+            <view class="feature-icon-wrapper bg-primary-light radius-full flex items-center justify-center">
+              <text class="iconfont icon-{{item.icon}} feature-icon"></text>
+            </view>
+            <text class="feature-title font-h3 text-primary text-center">{{item.title}}</text>
+            <text class="feature-desc font-caption text-tertiary text-center">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 最近项目区域 -->
+      <view class="recent-projects-section">
+        <view class="section-header flex items-center justify-between">
+          <text class="section-title font-h2 text-primary">最近项目</text>
+          <button class="view-all-btn btn-text font-body" bindtap="onViewAllProjects">全部项目 ></button>
+        </view>
+        
+        <view class="project-cards-list">
+          <view 
+            class="project-card card p-lg" 
+            wx:for="{{recentProjects}}" 
+            wx:key="id"
+            data-id="{{item.id}}"
+            bindtap="onProjectTap"
+          >
+            <view class="project-card-header flex items-start justify-between">
+              <view class="project-info flex-1">
+                <view class="project-top flex items-center">
+                  <view class="project-icon-wrapper bg-primary-light radius-md flex items-center justify-center">
+                    <text class="iconfont icon-{{item.icon}} project-icon"></text>
+                  </view>
+                  <view class="project-meta flex-1 margin-left-md">
+                    <text class="project-name font-h3 text-primary">{{item.name}}</text>
+                    <view class="project-status-row flex items-center margin-top-xs">
+                      <text class="status-tag tag tag-{{item.status === 'completed' ? 'success' : 'warning'}} radius-sm font-micro">{{item.statusText}}</text>
+                      <text class="interview-count font-caption text-tertiary margin-left-sm">{{item.interviewCount}}位受访者</text>
+                    </view>
+                  </view>
+                </view>
+                <text class="project-description font-body text-secondary margin-top-md">{{item.description}}</text>
+              </view>
+            </view>
+            
+            <view class="project-card-footer flex items-center justify-between margin-top-lg">
+              <view class="avatar-group">
+                <view class="avatar avatar-sm">A</view>
+                <view class="avatar avatar-sm">B</view>
+                <view class="avatar avatar-sm">+{{item.interviewCount - 2}}</view>
+              </view>
+              <view class="progress-info flex items-center">
+                <view class="progress-track progress-sm">
+                  <view class="progress-fill" style="width: {{item.progress}}%"></view>
+                </view>
+                <text class="progress-percent font-caption text-tertiary margin-left-xs">{{item.progress}}%</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 底部留白 -->
+      <view class="bottom-spacer" style="height: 80px;"></view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,70 @@
+<!--pages/profile/profile.wxml-->
+<view class="page-container">
+  <scroll-view scroll-y class="scroll-container">
+    <!-- 用户信息区 -->
+    <view class="profile-header p-lg">
+      <view class="user-info-card flex items-center">
+        <view class="user-avatar-wrapper" bindtap="onAvatarClick">
+          <image 
+            wx:if="{{userInfo.avatarUrl}}" 
+            class="user-avatar" 
+            src="{{userInfo.avatarUrl}}" 
+            mode="aspectFill"
+          />
+          <view wx:else class="user-avatar avatar avatar-xl">{{userInfo.nickName[0]}}</view>
+        </view>
+        <view class="user-meta flex-1 margin-left-lg">
+          <view class="user-name-row flex items-center">
+            <text class="user-name font-h1 text-primary">{{userInfo.nickName}}</text>
+            <view wx:if="{{userInfo.hasPro}}" class="pro-badge tag tag-primary radius-full font-micro margin-left-xs">Pro</view>
+          </view>
+          <text class="user-desc font-body text-tertiary margin-top-xs">影察 Pro 会员</text>
+        </view>
+        <view class="settings-icon" bindtap="onSettingsTap">
+          <text class="iconfont icon-setting"></text>
+        </view>
+      </view>
+
+      <!-- 统计卡片区 -->
+      <view class="stats-grid grid grid-cols-4 gap-md margin-top-xl">
+        <view class="stat-item flex-col items-center" wx:for="{{stats}}" wx:key="label">
+          <view class="stat-icon-wrapper bg-primary-light radius-full flex items-center justify-center">
+            <text class="iconfont icon-{{item.icon}} stat-icon"></text>
+          </view>
+          <text class="stat-value font-h2 text-primary margin-top-xs">{{item.value}}</text>
+          <text class="stat-label font-caption text-tertiary">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能菜单 -->
+    <view class="menu-section margin-top-lg">
+      <view class="menu-item card flex items-center p-lg" wx:for="{{menuItems}}" wx:key="title" data-path="{{item.path}}" bindtap="onMenuItemTap">
+        <view class="menu-icon-wrapper bg-primary-light radius-md flex items-center justify-center">
+          <text class="iconfont icon-{{item.icon}} menu-icon"></text>
+        </view>
+        <view class="menu-content flex-1 margin-left-md">
+          <text class="menu-title font-h3 text-primary">{{item.title}}</text>
+          <text wx:if="{{item.desc}}" class="menu-desc font-caption text-tertiary">{{item.desc}}</text>
+        </view>
+        <text class="iconfont icon-arrow-right menu-arrow"></text>
+      </view>
+    </view>
+
+    <!-- 设置菜单 -->
+    <view class="settings-section margin-top-lg">
+      <view class="menu-item card flex items-center p-lg" wx:for="{{settingsItems}}" wx:key="title" data-path="{{item.path}}" bindtap="onMenuItemTap">
+        <view class="menu-icon-wrapper bg-primary-light radius-md flex items-center justify-center">
+          <text class="iconfont icon-{{item.icon}} menu-icon"></text>
+        </view>
+        <view class="menu-content flex-1 margin-left-md">
+          <text class="menu-title font-h3 text-primary">{{item.title}}</text>
+        </view>
+        <text class="iconfont icon-arrow-right menu-arrow"></text>
+      </view>
+    </view>
+
+    <!-- 底部留白 -->
+    <view class="bottom-spacer" style="height: 80px;"></view>
+  </scroll-view>
+</view>

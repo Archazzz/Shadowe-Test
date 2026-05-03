@@ -1,0 +1,73 @@
+<!--pages/analyzing/analyzing.wxml-->
+<view class="page-container">
+  <scroll-view scroll-y class="scroll-container">
+    <!-- 标题区域 -->
+    <view class="analyzing-header p-lg text-center">
+      <text class="page-title font-h1 text-primary">AI 正在从对话中</text>
+      <text class="page-subtitle font-h1 text-primary-gradient">提取洞察</text>
+      <view class="analyzing-status tag tag-warning radius-full font-micro margin-top-md">
+        <text class="status-dot"></text>
+        分析中，请稍候
+      </view>
+    </view>
+
+    <!-- AI 分析可视化 -->
+    <view class="ai-visualization flex-col items-center justify-center">
+      <view class="ai-avatar-large radius-full flex items-center justify-center animate-breathe">
+        <text class="iconfont icon-robot ai-icon"></text>
+      </view>
+      
+      <!-- 环绕数据粒子 -->
+      <view class="data-particles">
+        <view class="particle particle-1"></view>
+        <view class="particle particle-2"></view>
+        <view class="particle particle-3"></view>
+        <view class="particle particle-4"></view>
+        <view class="particle particle-5"></view>
+      </view>
+    </view>
+
+    <!-- 分析阶段标签 -->
+    <view class="stages-container margin-xl">
+      <view class="stage-item flex items-center" wx:for="{{analysisStages}}" wx:key="name">
+        <view class="stage-indicator-wrapper">
+          <view class="stage-indicator radius-full flex items-center justify-center 
+            {{item.status === 'completed' ? 'indicator-completed' : ''}} 
+            {{item.status === 'processing' ? 'indicator-processing' : ''}} 
+            {{item.status === 'waiting' ? 'indicator-waiting' : ''}}">
+            <text wx:if="{{item.status === 'completed'}}" class="iconfont icon-check check-icon"></text>
+            <view wx:if="{{item.status === 'processing'}}" class="processing-spinner"></view>
+            <view wx:if="{{item.status === 'waiting'}}" class="waiting-dot"></view>
+          </view>
+          <view wx:if="{{index < analysisStages.length - 1}}" class="stage-line {{item.status === 'completed' ? 'line-completed' : ''}}"></view>
+        </view>
+        <text class="stage-name font-body {{item.status === 'processing' ? 'text-primary' : (item.status === 'completed' ? 'text-primary' : 'text-placeholder')}}">{{item.name}}</text>
+      </view>
+    </view>
+
+    <!-- 分析进度卡片 -->
+    <view class="progress-card card p-lg margin-lg">
+      <view class="progress-item flex items-center" wx:for="{{analysisStages}}" wx:key="name">
+        <view class="progress-status-icon">
+          <text wx:if="{{item.status === 'completed'}}" class="iconfont icon-check-circle text-success"></text>
+          <view wx:if="{{item.status === 'processing'}}" class="loading-spinner"></view>
+          <view wx:if="{{item.status === 'waiting'}}" class="waiting-circle"></view>
+        </view>
+        <text class="progress-stage-name font-h3 text-secondary flex-1 margin-left-md">{{item.name}}</text>
+        <text wx:if="{{item.status === 'completed'}}" class="status-text font-caption text-success">已完成</text>
+        <text wx:if="{{item.status === 'processing'}}" class="status-text font-caption text-primary">进行中</text>
+        <text wx:if="{{item.status === 'waiting'}}" class="status-text font-caption text-placeholder">等待中</text>
+      </view>
+      
+      <view class="progress-summary margin-top-lg text-center">
+        <view class="progress-bar-track progress-track">
+          <view class="progress-bar-fill progress-fill" style="width: {{progress}}%"></view>
+        </view>
+        <text class="estimated-time font-caption text-tertiary margin-top-sm">预计还需 {{estimatedTime}} 秒</text>
+      </view>
+    </view>
+
+    <!-- 底部留白 -->
+    <view class="bottom-spacer" style="height: 80px;"></view>
+  </scroll-view>
+</view>

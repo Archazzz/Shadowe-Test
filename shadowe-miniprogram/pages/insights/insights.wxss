@@ -1,0 +1,192 @@
+/* pages/insights/insights.wxss */
+
+.dark-theme {
+  background: #0D0D1A;
+}
+
+.insights-header {
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+
+.page-title {
+  display: block;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.page-desc {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.text-white {
+  color: #FFFFFF;
+}
+
+.text-white-dim {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 筛选标签栏 */
+.filter-scroll {
+  white-space: nowrap;
+  padding: 0 16px 16px;
+  background: #1A1A2E;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.filter-tags-row {
+  gap: 8px;
+}
+
+.filter-tag {
+  flex-shrink: 0;
+}
+
+.tag-active {
+  background: linear-gradient(135deg, #8B6CF6, #B49DFB);
+  color: #FFFFFF;
+}
+
+.tag-inactive {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 洞察列表 */
+.insights-list {
+  padding: 16px;
+  padding-top: 0;
+}
+
+.insight-card {
+  background: #1A1A2E;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 16px rgba(139, 108, 246, 0.1);
+  margin-bottom: 12px;
+}
+
+.insight-card-header {
+  margin-bottom: 12px;
+}
+
+.insight-tags {
+  gap: 8px;
+}
+
+.interview-count {
+  gap: 4px;
+}
+
+.insight-title {
+  display: block;
+  color: #FFFFFF;
+}
+
+.insight-description {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.insight-quote {
+  padding: 12px;
+  background: rgba(237, 232, 254, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #8B6CF6;
+}
+
+.quote-icon {
+  font-size: 24px;
+  line-height: 1;
+  margin-right: 8px;
+  color: #8B6CF6;
+}
+
+.quote-content {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.insight-card-footer {
+  margin-top: 16px;
+}
+
+.impact-ring {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+.impact-score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 600;
+  color: #8B6CF6;
+}
+
+/* 提示行 */
+.hint-row {
+  gap: 4px;
+  padding: 16px;
+}
+
+.hint-icon {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hint-text {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hint-arrow {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 底部操作 */
+.bottom-action {
+  padding: 16px;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 8px;
+}
+
+.margin-bottom-md {
+  margin-bottom: 12px;
+}
+
+.margin-bottom-lg {
+  margin-bottom: 16px;
+}
+
+.margin-right-xs {
+  margin-right: 4px;
+}
+
+.margin-left-xs {
+  margin-left: 4px;
+}
+
+.gap-xs {
+  gap: 4px;
+}
+
+.p-lg {
+  padding: 16px;
+}
+
+.p-md {
+  padding: 12px;
+}

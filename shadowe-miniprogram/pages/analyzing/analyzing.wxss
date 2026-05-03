@@ -1,0 +1,272 @@
+/* pages/analyzing/analyzing.wxss */
+
+.analyzing-header {
+  padding-top: 24px;
+}
+
+.page-title {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  display: block;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  margin-right: 4px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* AI 可视化区 */
+.ai-visualization {
+  height: 200px;
+  margin: 32px 0;
+  position: relative;
+}
+
+.ai-avatar-large {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #8B6CF6, #B49DFB);
+  box-shadow: 0 0 40px rgba(139, 108, 246, 0.4);
+  z-index: 10;
+}
+
+.ai-icon {
+  font-size: 56px;
+  color: #FFFFFF;
+}
+
+.data-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8B6CF6;
+  animation: orbit 4s linear infinite;
+}
+
+.particle-1 {
+  top: 0;
+  left: 50%;
+  background: #8B6CF6;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  top: 25%;
+  right: 0;
+  background: #F88BD1;
+  animation-delay: 0.8s;
+}
+
+.particle-3 {
+  bottom: 0;
+  left: 50%;
+  background: #5B8CFF;
+  animation-delay: 1.6s;
+}
+
+.particle-4 {
+  top: 50%;
+  left: 0;
+  background: #B49DFB;
+  animation-delay: 2.4s;
+}
+
+.particle-5 {
+  top: 15%;
+  left: 20%;
+  background: #FFB8D1;
+  animation-delay: 3.2s;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+/* 分析阶段容器 */
+.stages-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 16px;
+}
+
+.stage-item {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stage-indicator-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stage-indicator {
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+}
+
+.indicator-completed {
+  background: linear-gradient(135deg, #8B6CF6, #B49DFB);
+}
+
+.check-icon {
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.indicator-processing {
+  background: #FFFFFF;
+  border: 2px solid #8B6CF6;
+}
+
+.processing-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #EDE8FE;
+  border-top-color: #8B6CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.indicator-waiting {
+  background: #E8E8F0;
+}
+
+.waiting-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9999AA;
+}
+
+.stage-line {
+  width: 2px;
+  height: 40px;
+  background: #E8E8F0;
+  margin-top: 4px;
+}
+
+.line-completed {
+  background: linear-gradient(180deg, #8B6CF6, #B49DFB);
+}
+
+.stage-name {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 进度卡片 */
+.progress-card {
+  margin: 0 16px 16px;
+}
+
+.progress-item {
+  padding: 12px 0;
+}
+
+.progress-item:last-child {
+  border-bottom: none;
+}
+
+.progress-status-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-success {
+  color: #34C759;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #EDE8FE;
+  border-top-color: #8B6CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.waiting-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D4D4E0;
+}
+
+.progress-stage-name {
+  flex: 1;
+}
+
+.status-text {
+  min-width: 50px;
+  text-align: right;
+}
+
+.progress-summary {
+  padding-top: 16px;
+  border-top: 1px solid #E8E8F0;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 6px;
+}
+
+.estimated-time {
+  display: block;
+  margin-top: 8px;
+}
+
+.margin-xl {
+  margin: 24px;
+}
+
+.margin-lg {
+  margin: 16px;
+}
+
+.margin-top-md {
+  margin-top: 12px;
+}
+
+.margin-top-sm {
+  margin-top: 8px;
+}
+
+.margin-left-md {
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

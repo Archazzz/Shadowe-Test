@@ -1,0 +1,82 @@
+<!--pages/recording/recording.wxml-->
+<view class="page-container">
+  <scroll-view scroll-y class="scroll-container">
+    <!-- 标题区域 -->
+    <view class="recording-header p-lg text-center">
+      <text class="page-title font-h1 text-primary">正在倾听真实声音</text>
+      <text class="page-desc font-body text-secondary">无需打断，AI 会在后台分析</text>
+    </view>
+
+    <!-- 声波可视化区 -->
+    <view class="wave-visualization flex-col items-center justify-center">
+      <view class="wave-rings">
+        <view class="wave-ring ring-outer animate-pulse"></view>
+        <view class="wave-ring ring-middle animate-pulse"></view>
+        <view class="wave-ring ring-inner animate-pulse"></view>
+      </view>
+      
+      <view 
+        class="mic-button radius-full flex items-center justify-center"
+        bindtap="toggleRecording"
+      >
+        <text class="iconfont icon-{{isRecording && !isPaused ? 'stop' : 'mic'}} mic-icon"></text>
+      </view>
+      
+      <view class="duration-display margin-top-lg">
+        <text class="duration-text font-h2 text-primary">{{duration}}</text>
+        <view wx:if="{{isRecording && !isPaused}}" class="recording-status tag tag-warning radius-full font-micro margin-top-xs">
+          <text class="status-dot"></text>
+          进行中
+        </view>
+      </view>
+    </view>
+
+    <!-- 实时转写卡片 -->
+    <view class="transcript-card card p-lg margin-lg">
+      <view class="transcript-header flex items-center justify-between margin-bottom-md">
+        <text class="transcript-title font-h3 text-primary">实时转写</text>
+        <view class="status-tag tag tag-warning radius-sm font-micro">
+          <text class="status-dot"></text>
+          进行中
+        </view>
+      </view>
+      
+      <view class="transcript-list">
+        <view class="transcript-item" wx:for="{{transcripts}}" wx:key="index">
+          <view class="transcript-row flex items-start">
+            <view class="speaker-tag tag tag-{{item.speaker === '用户' ? 'primary' : 'info'}} radius-sm font-micro">{{item.speaker}}</view>
+            <text class="transcript-content font-body text-secondary flex-1 margin-left-xs">{{item.content}}</text>
+            <text class="transcript-time font-caption text-tertiary margin-left-sm">{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部留白 -->
+    <view class="bottom-spacer" style="height: 100px;"></view>
+  </scroll-view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-action-bar safe-area-bottom">
+    <view class="action-btn flex-col items-center" bindtap="onMarkImportant">
+      <view class="action-icon-wrapper bg-primary-light radius-full flex items-center justify-center">
+        <text class="iconfont icon-star action-icon"></text>
+      </view>
+      <text class="action-label font-caption text-tertiary">标记重点</text>
+    </view>
+    
+    <view 
+      class="pause-btn radius-full flex items-center justify-center"
+      bindtap="isPaused ? resumeRecording : (isRecording ? pauseRecording : toggleRecording)"
+    >
+      <text class="iconfont icon-{{isPaused ? 'play' : (isRecording ? 'pause' : 'mic')}} pause-icon"></text>
+    </view>
+    
+    <view class="action-btn flex-col items-center" bindtap="onFinishInterview">
+      <view class="action-icon-wrapper bg-primary-light radius-full flex items-center justify-center">
+        <text class="iconfont icon-check action-icon"></text>
+      </view>
+      <text class="action-label font-caption text-tertiary">结束访谈</text>
+    </view>
+  </view>
+</view>
