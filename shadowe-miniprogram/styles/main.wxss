@@ -1,5 +1,8 @@
-page: 0%;
-stop: 100%);
+/* 影察 Shadowe - 全局样式库 */
+
+/* 主色渐变 */
+.gradient-primary {
+  background: linear-gradient(135deg, #8B6CF6, #B49DFB);
 }
 
 /* 辅助色渐变 */
