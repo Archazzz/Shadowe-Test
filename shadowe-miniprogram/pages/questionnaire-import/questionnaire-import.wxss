@@ -1,0 +1,11 @@
+.placeholder-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #F7F5FF;
+}
+.placeholder-page text {
+  color: #9999AA;
+  font-size: 32rpx;
+}

@@ -1,0 +1,6 @@
+<!-- 访谈列表页面 -->
+<view class="interviews-page">
+  <view class="placeholder-content">
+    <text>访谈列表页面开发中...</text>
+  </view>
+</view>
