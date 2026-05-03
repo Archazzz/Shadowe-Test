@@ -1,0 +1,287 @@
+/* pages/project-detail/project-detail.wxss */
+
+.project-overview {
+  padding-top: 24px;
+}
+
+.project-icon-wrapper {
+  width: 64px;
+  height: 64px;
+}
+
+.project-icon-large {
+  font-size: 32px;
+  color: #8B6CF6;
+}
+
+.project-name-row {
+  gap: 8px;
+}
+
+.edit-icon {
+  font-size: 18px;
+  color: #9999AA;
+}
+
+.project-meta-row {
+  gap: 8px;
+}
+
+.meta-item {
+  gap: 4px;
+}
+
+.meta-icon {
+  font-size: 14px;
+  color: #9999AA;
+}
+
+.meta-divider {
+  font-size: 12px;
+}
+
+.stats-grid {
+  margin-top: 24px;
+}
+
+.stat-item {
+  gap: 8px;
+}
+
+.stat-icon-wrapper {
+  width: 48px;
+  height: 48px;
+}
+
+.stat-icon {
+  font-size: 20px;
+  color: #8B6CF6;
+}
+
+.stat-value {
+  text-align: center;
+}
+
+.stat-label {
+  text-align: center;
+}
+
+/* Tab 导航栏 */
+.tab-nav {
+  position: sticky;
+  top: 0;
+  background: #F7F5FF;
+  display: flex;
+  border-bottom: 1px solid #E8E8F0;
+  z-index: 100;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  position: relative;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, #8B6CF6, #B49DFB);
+  border-radius: 2px;
+}
+
+/* Tab 内容区 */
+.tab-content {
+  padding: 16px;
+}
+
+.section-header {
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-weight: 600;
+}
+
+.view-all-btn {
+  padding: 0;
+  color: #8B6CF6;
+}
+
+.insight-card-mini {
+  padding: 12px;
+}
+
+.insight-mini-header {
+  gap: 12px;
+}
+
+.type-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.bg-error-light {
+  background: #FFE8E8;
+}
+
+.bg-info-light {
+  background: #E8F0FF;
+}
+
+.bg-warning-light {
+  background: #FFF0E8;
+}
+
+.type-icon {
+  font-size: 16px;
+}
+
+.insight-mini-meta {
+  min-width: 0;
+  flex: 1;
+}
+
+.insight-mini-title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.insight-mini-tags {
+  gap: 8px;
+}
+
+.view-all-insights-btn {
+  padding: 12px 0;
+  color: #8B6CF6;
+  text-align: center;
+}
+
+/* 项目资源 */
+.resources-section {
+  margin-top: 24px;
+}
+
+.resource-item {
+  gap: 8px;
+}
+
+.resource-icon-wrapper {
+  width: 56px;
+  height: 56px;
+}
+
+.resource-icon {
+  font-size: 24px;
+  color: #8B6CF6;
+}
+
+.resource-label {
+  text-align: center;
+}
+
+.resource-count {
+  text-align: center;
+}
+
+/* 空状态 */
+.empty-state {
+  padding: 48px 16px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: #D4D4E0;
+}
+
+.empty-text {
+  display: block;
+}
+
+.padding-2xl {
+  padding: 24px;
+}
+
+.margin-bottom-lg {
+  margin-bottom: 16px;
+}
+
+.margin-bottom-md {
+  margin-bottom: 12px;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 8px;
+}
+
+.margin-left-xs {
+  margin-left: 4px;
+}
+
+.margin-left-sm {
+  margin-left: 8px;
+}
+
+.margin-left-lg {
+  margin-left: 16px;
+}
+
+.margin-right-sm {
+  margin-right: 8px;
+}
+
+.margin-top-xl {
+  margin-top: 24px;
+}
+
+.margin-top-xs {
+  margin-top: 4px;
+}
+
+/* 底部操作栏 */
+.bottom-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #E8E8F0;
+}
+
+.export-btn {
+  padding: 0 24px;
+  color: #8B6CF6;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.bottom-spacer {
+  height: 100px;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.w-full {
+  width: 100%;
+}

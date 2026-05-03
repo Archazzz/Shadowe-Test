@@ -1,0 +1,195 @@
+/* pages/recording/recording.wxss */
+
+.recording-header {
+  padding-top: 24px;
+}
+
+.page-title {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.page-desc {
+  display: block;
+}
+
+/* 声波可视化区 */
+.wave-visualization {
+  height: 240px;
+  margin: 24px 0;
+}
+
+.wave-rings {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wave-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 108, 246, 0.15);
+}
+
+.ring-outer {
+  width: 200px;
+  height: 200px;
+}
+
+.ring-middle {
+  width: 140px;
+  height: 140px;
+  border-color: rgba(139, 108, 246, 0.1);
+}
+
+.ring-inner {
+  width: 80px;
+  height: 80px;
+  border-color: rgba(139, 108, 246, 0.05);
+}
+
+.mic-button {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #8B6CF6, #B49DFB);
+  box-shadow: 0 0 30px rgba(139, 108, 246, 0.3);
+}
+
+.mic-icon {
+  font-size: 32px;
+  color: #FFFFFF;
+}
+
+.duration-display {
+  text-align: center;
+}
+
+.duration-text {
+  font-family: 'SF Pro Display', monospace;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  margin-right: 4px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* 转写卡片 */
+.transcript-card {
+  margin: 0 16px 16px;
+}
+
+.transcript-header {
+  margin-bottom: 12px;
+}
+
+.transcript-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.transcript-item {
+  margin-bottom: 12px;
+}
+
+.transcript-item:last-child {
+  margin-bottom: 0;
+}
+
+.transcript-row {
+  gap: 8px;
+}
+
+.speaker-tag {
+  flex-shrink: 0;
+}
+
+.transcript-content {
+  word-break: break-all;
+}
+
+.transcript-time {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.margin-bottom-md {
+  margin-bottom: 12px;
+}
+
+.margin-left-xs {
+  margin-left: 4px;
+}
+
+.margin-left-sm {
+  margin-left: 8px;
+}
+
+.margin-top-lg {
+  margin-top: 16px;
+}
+
+.margin-top-xs {
+  margin-top: 4px;
+}
+
+.margin-lg {
+  margin: 16px;
+}
+
+/* 底部操作栏 */
+.bottom-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16px;
+  border-top: 1px solid #E8E8F0;
+}
+
+.action-btn {
+  gap: 8px;
+}
+
+.action-icon-wrapper {
+  width: 48px;
+  height: 48px;
+}
+
+.action-icon {
+  font-size: 20px;
+  color: #8B6CF6;
+}
+
+.action-label {
+  text-align: center;
+}
+
+.pause-btn {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #8B6CF6, #B49DFB);
+  box-shadow: 0 4px 16px rgba(139, 108, 246, 0.3);
+}
+
+.pause-icon {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+.bottom-spacer {
+  height: 100px;
+}

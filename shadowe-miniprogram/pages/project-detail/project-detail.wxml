@@ -1,0 +1,117 @@
+<!--pages/project-detail/project-detail.wxml-->
+<view class="page-container">
+  <scroll-view scroll-y class="scroll-container">
+    <!-- 项目概览区 -->
+    <view class="project-overview p-lg">
+      <view class="project-icon-wrapper bg-primary-light radius-lg flex items-center justify-center margin-bottom-lg">
+        <text class="iconfont icon-{{project.icon}} project-icon-large"></text>
+      </view>
+      
+      <view class="project-name-row flex items-center margin-bottom-md">
+        <text class="project-name font-h1 text-primary">{{project.name}}</text>
+        <text class="iconfont icon-edit edit-icon"></text>
+      </view>
+      
+      <view class="project-meta-row flex items-center flex-wrap margin-bottom-lg">
+        <view class="meta-item flex items-center">
+          <text class="iconfont icon-calendar meta-icon"></text>
+          <text class="meta-text font-caption text-tertiary margin-left-xs">{{project.date}}</text>
+        </view>
+        <text class="meta-divider text-tertiary margin-left-sm margin-right-sm">·</text>
+        <view class="meta-item flex items-center">
+          <text class="iconfont icon-users meta-icon"></text>
+          <text class="meta-text font-caption text-tertiary margin-left-xs">访谈 {{project.interviewCount}} 位受访者</text>
+        </view>
+        <text class="meta-divider text-tertiary margin-left-sm margin-right-sm">·</text>
+        <view class="meta-item flex items-center">
+          <text class="iconfont icon-user meta-icon"></text>
+          <text class="meta-text font-caption text-tertiary margin-left-xs">由 {{project.creator}} 创建</text>
+        </view>
+        <view class="status-tag tag tag-warning radius-sm font-micro margin-left-sm">{{project.statusText}}</view>
+      </view>
+
+      <!-- 统计卡片区 -->
+      <view class="stats-grid grid grid-cols-4 gap-md">
+        <view class="stat-item flex-col items-center" wx:for="{{stats}}" wx:key="label">
+          <view class="stat-icon-wrapper bg-primary-light radius-full flex items-center justify-center">
+            <text class="iconfont icon-{{item.icon}} stat-icon"></text>
+          </view>
+          <text class="stat-value font-h2 text-primary margin-top-xs">{{item.value}}</text>
+          <text class="stat-label font-caption text-tertiary">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Tab 导航栏 -->
+    <view class="tab-nav sticky-top">
+      <view class="tab-item {{index === activeTab ? 'active' : ''}}" 
+            wx:for="{{tabs}}" 
+            wx:key="*this"
+            data-index="{{index}}"
+            bindtap="onTabChange">
+        <text class="tab-text font-body {{index === activeTab ? 'text-primary' : 'text-tertiary'}}">{{item}}</text>
+        <view wx:if="{{index === activeTab}}" class="tab-indicator"></view>
+      </view>
+    </view>
+
+    <!-- Tab 内容区 - 洞察汇总 -->
+    <view class="tab-content p-lg" wx:if="{{activeTab === 0}}">
+      <view class="section-header flex items-center justify-between margin-bottom-lg">
+        <text class="section-title font-h2 text-primary">关键洞察</text>
+        <button class="view-all-btn btn-text font-body" bindtap="onViewAllInsights">查看全部 ></button>
+      </view>
+
+      <view class="insight-cards">
+        <view class="insight-card-mini card p-md margin-bottom-md" wx:for="{{insights}}" wx:key="id">
+          <view class="insight-mini-header flex items-center margin-bottom-sm">
+            <view class="type-icon-wrapper bg-{{item.type === 'pain' ? 'error' : (item.type === 'need' ? 'info' : 'warning')}}-light radius-full flex items-center justify-center">
+              <text class="iconfont icon-{{item.type === 'pain' ? 'warning' : (item.type === 'need' ? 'bulb' : 'target')}} type-icon"></text>
+            </view>
+            <view class="insight-mini-meta margin-left-sm">
+              <text class="insight-mini-title font-h3 text-primary">{{item.title}}</text>
+              <view class="insight-mini-tags flex items-center margin-top-xs">
+                <view class="tag tag-{{item.type}} radius-sm font-micro">{{item.typeLabel}}</view>
+                <view class="tag tag-frequent radius-sm font-micro margin-left-xs">{{item.frequency}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <button class="view-all-insights-btn btn-text font-body text-center w-full" bindtap="onViewAllInsights">
+        查看全部 {{insights.length * 4}} 条洞察 >
+      </button>
+
+      <!-- 项目资源 -->
+      <view class="resources-section margin-top-xl">
+        <text class="section-title font-h2 text-primary margin-bottom-lg">项目资源</text>
+        <view class="resources-grid grid grid-cols-4 gap-md">
+          <view class="resource-item flex-col items-center" wx:for="{{resources}}" wx:key="label">
+            <view class="resource-icon-wrapper bg-primary-light radius-lg flex items-center justify-center">
+              <text class="iconfont icon-{{item.icon}} resource-icon"></text>
+            </view>
+            <text class="resource-label font-caption text-tertiary margin-top-xs">{{item.label}}</text>
+            <text class="resource-count font-micro text-primary margin-top-xs">{{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 其他 Tab 内容占位 -->
+    <view class="tab-content p-lg text-center" wx:if="{{activeTab !== 0}}">
+      <view class="empty-state padding-2xl">
+        <text class="iconfont icon-folder empty-icon"></text>
+        <text class="empty-text font-body text-tertiary margin-top-lg">暂无内容</text>
+      </view>
+    </view>
+
+    <!-- 底部留白 -->
+    <view class="bottom-spacer" style="height: 100px;"></view>
+  </scroll-view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-action-bar safe-area-bottom">
+    <button class="btn btn-text export-btn" bindtap="onExportReport">导出报告</button>
+    <button class="btn btn-primary flex-1 margin-left-lg" bindtap="onResumeAnalysis">继续分析</button>
+  </view>
+</view>

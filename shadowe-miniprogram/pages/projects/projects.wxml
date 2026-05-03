@@ -1,0 +1,80 @@
+<!--pages/projects/projects.wxml-->
+<view class="page-container">
+  <scroll-view scroll-y class="scroll-container">
+    <!-- 页面标题 -->
+    <view class="page-header p-lg">
+      <text class="page-title font-h1 text-primary">我的项目</text>
+    </view>
+
+    <!-- 搜索筛选区 -->
+    <view class="search-filter-section px-lg">
+      <view class="search-bar search-box flex items-center">
+        <text class="iconfont icon-search search-icon"></text>
+        <input 
+          class="search-input" 
+          placeholder="搜索项目..." 
+          placeholder-class="placeholder-text"
+          value="{{searchValue}}"
+          bindinput="onSearchInput"
+        />
+      </view>
+      <view class="filter-dropdown flex items-center" bindtap="onFilterTap">
+        <text class="filter-text font-body text-tertiary">{{filterText}}</text>
+        <text class="iconfont icon-arrow-down filter-arrow"></text>
+      </view>
+    </view>
+
+    <!-- 项目卡片列表 -->
+    <view class="project-list p-lg">
+      <view 
+        class="project-card card p-lg" 
+        wx:for="{{projects}}" 
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onProjectTap"
+      >
+        <view class="project-card-header flex items-start justify-between">
+          <view class="project-info flex-1">
+            <view class="project-top flex items-center">
+              <view class="project-icon-wrapper bg-primary-light radius-md flex items-center justify-center">
+                <text class="iconfont icon-{{item.icon}} project-icon"></text>
+              </view>
+              <view class="project-meta flex-1 margin-left-md">
+                <view class="project-name-row flex items-center">
+                  <text class="project-name font-h3 text-primary">{{item.name}}</text>
+                  <text class="status-tag tag tag-{{item.status === 'completed' ? 'success' : (item.status === 'analyzing' ? 'warning' : 'primary')}} radius-sm font-micro margin-left-xs">{{item.statusText}}</text>
+                </view>
+                <view class="project-meta-row flex items-center margin-top-xs">
+                  <text class="interview-count font-caption text-tertiary">{{item.interviewCount}}位受访者</text>
+                  <text class="date-divider text-tertiary margin-left-sm margin-right-sm">·</text>
+                  <text class="project-date font-caption text-tertiary">{{item.date}}</text>
+                </view>
+              </view>
+              <view class="more-action">
+                <text class="iconfont icon-more more-icon"></text>
+              </view>
+            </view>
+            <text class="project-description font-body text-secondary margin-top-md">{{item.description}}</text>
+          </view>
+        </view>
+        
+        <view class="project-card-footer flex items-center justify-between margin-top-lg" wx:if="{{item.progress > 0}}">
+          <view class="avatar-group">
+            <view class="avatar avatar-sm">A</view>
+            <view class="avatar avatar-sm">B</view>
+            <view class="avatar avatar-sm">+{{item.interviewCount > 2 ? item.interviewCount - 2 : 0}}</view>
+          </view>
+          <view class="progress-info flex items-center">
+            <view class="progress-track progress-sm">
+              <view class="progress-fill" style="width: {{item.progress}}%"></view>
+            </view>
+            <text class="progress-percent font-caption text-tertiary margin-left-xs">{{item.progress}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部留白 -->
+    <view class="bottom-spacer" style="height: 100px;"></view>
+  </scroll-view>
+</view>
